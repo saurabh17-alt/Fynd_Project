@@ -235,8 +235,8 @@ def deletereport():
 def downloadreport():
     global file_path,user_id,cwddr
     if login_status == True:
+        path = os.getcwd()
         if file_path == "":
-            path = os.getcwd()
             if "pdf_files" not in path:
                 cwddr = path
                 path+="/pdf_files"
