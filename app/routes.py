@@ -160,7 +160,8 @@ def upload():
     global file_path
     if login_status == True:
         if request.method == "POST":
-            os.chdir(cwddr)
+            if cwddr != "":
+                os.chdir(cwddr)
             filel = request.files["file_name"]
             file_name = filel.filename
             p1 = os.getcwd()
@@ -236,20 +237,20 @@ def downloadreport():
     if login_status == True:
         if file_path == "":
             path = os.getcwd()
-            cwddr = path
-            path+="/pdf_files"
+            if "pdf_files" not in path:
+                cwddr = path
+                path+="/pdf_files"
             os.chdir(path=path)
-            print(os.chdir(path=path))
             file_path = path
-        else:
-            path = file_path
+        # else:
+        #     path = file_path
 
         delflpath  = path
         dir_name = os.listdir()
         if len(dir_name) != 0:
             for i in dir_name:
                 delflpath  = path+"\\"+i
-                os.remove(i)
+                os.remove(delflpath)
 
         report_id = request.args.get("report_id")
         report_id = int(report_id)
@@ -262,6 +263,8 @@ def downloadreport():
             filed.write(i)
         filed.close()
         report_id = None
+
+        file_path = ""
 
         return send_file(fname,as_attachment=True)
     else:
