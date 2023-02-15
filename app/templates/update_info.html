@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>User</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/a7a4ea6722.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/static/sub_style.css">
+
+</head>
+<body>
+<header id="header">
+    <nav class="navbar navbar-inverse navbar-fixed-top" style="border-radius: 0px; background-color: #080808; ">
+        <div class="container-fluid" style="padding-right: 35px;">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Preesco</a>
+          </div>
+          <ul class="nav navbar-nav navbar-right">
+            {% if (ast==True) and (ust==False) %}
+            <li class="active"><a href="/Admin">Home</a></li>
+            {% else %}
+            <li class="active"><a href="/User">Home</a></li>
+            {% endif %}
+            
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa-solid fa-user"></i><span class="caret"></span></a>
+              <ul class="dropdown-menu" style="min-width: 90px;">
+                <li><a href="/Update" ><i class="fa-solid fa-address-card"></i>  profile</a></li>
+                {% if (ast==True) and (ust==False) %}
+                <li><a href="/Report" ><i class="fa-sharp fa-solid fa-file"></i> Report</a></li>
+                {% else %}
+                <li><a href="/Upload" ><i class="fa-solid fa-upload"></i> upload</a></li>
+                {% endif %}
+                <li><a href="{{url_for('logout')}}" ><i class="fa-solid fa-right-from-bracket"></i> Signout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+</header>
+    
+  <div class = "container" id="updateinfo">
+    <form action="/Save" method="post">
+        <div class="form-group" >
+            <label for="formGroupExampleInput" class="lb">Email</label>
+            <input type="text" class="form-control" name="e1" placeholder="Email" value={{e}} disabled>
+        </div>
+    
+        <div class="form-group">
+            <label for="formGroupExampleInput" class="lb">Name</label>
+            <input type="text" class="form-control" name="n1" placeholder="Name" value={{n}} disabled>
+        </div>
+    
+        <div class="form-group">
+            <label for="formGroupExampleInput2" class="lb">Phone number</label>
+            <input type="text" class="form-control" name="num1" placeholder="Phone Number" value={{num}} disabled>
+        </div>
+    
+        <div class="form-group">
+            <label for="formGroupExampleInput2" class="lb">Password</label>
+            <input type="text" class="form-control" name="p1" placeholder="Password" value={{p}} disabled>
+        </div>
+
+        <div class="upbtn">
+            <button type="button" id="updt" class="btn-group">Edit</button>
+            <button type="submit" class="btn-group">Save</button>
+        </div>
+
+    </form>
+
+
+  </div>
+
+<script>
+  $(document).ready(function() {
+    var disabled = false;
+    $('#updt').click(function() {
+        if (disabled) {
+            $(".form-control").prop('disabled', false);       // if disabled, enable
+        }
+        else {
+            $(".form-control").prop('disabled', true);        // if enabled, disable
+        }
+        disabled = !disabled;
+    })
+});
+</script>
+
+
+</body>
+</html>

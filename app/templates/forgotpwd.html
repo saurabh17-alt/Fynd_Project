@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <script src="https://kit.fontawesome.com/a7a4ea6722.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+
+
+<div class="container">
+    <!-- naviagation bar  -->
+    <nav class="navbar-nav">
+        <h2 class="logo">Preesco</h2>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/home">About</a></li>
+            <li><a href="/home">Contact Us</a></li>
+            <li><button type="button" class="disable1" id="signinbtn">Login</button></li>
+            <li><button type="button" id="signupbtn">Sign Up</button></li>
+        </ul>
+    </nav>
+
+
+
+    <div class="form-box" id="form-box"  style="height: 300px;">
+
+        <div class="login" id="login">
+            <form action="/reset" method="post">
+                <h1 id="title">Reset Password</h1>
+                <div class="input-group" id="inputgrp">
+
+                    <div class="input-field">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" placeholder="email" name="email" autocomplete="off" required>
+                    </div>
+    
+                    <div class="input-field" id="nameField_log">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="secret key" name="secretkey" id="secretkey" autocomplete="off">
+                    </div>
+
+                    <div class="input-field">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" placeholder="New password" name="password" autocomplete="off" required>
+                    </div>
+    
+                    <button type="submit" class="submitbtn">Submit</button>
+                </div>
+
+            </form>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+</body>
+</html>

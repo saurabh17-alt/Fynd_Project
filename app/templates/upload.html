@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Upload</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/a7a4ea6722.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/static/sub_style.css">
+
+</head>
+<body>
+
+  <nav class="navbar navbar-inverse navbar-fixed-top" style="border-radius: 0px; background-color: #080808; opacity: 0.9; ">
+    <div class="container-fluid" style="padding-right: 35px;">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Preesco</a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="/User">Home</a></li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa-solid fa-user"></i><span class="caret"></span></a>
+          <ul class="dropdown-menu" style="min-width: 90px;">
+            <li><a href="/Update" ><i class="fa-solid fa-address-card"></i>  profile</a></li>
+            <li><a href="/Upload" ><i class="fa-solid fa-upload"></i> upload</a></li>
+            <li><a href="{{url_for('logout')}}" ><i class="fa-solid fa-right-from-bracket"></i> Signout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+    
+
+  <div class="container-upload" id="upload_class">
+    <form method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <label class="form-label" for="customFile">Upload File</label>
+        <input type="file" class="form-control" id="customFile" name="file_name" accept=".pdf"/>
+      </div>
+      <!-- <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1">
+        <label class="form-check-label" for="flexRadioDefault1">
+          Priscription
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault2" checked>
+        <label class="form-check-label" for="flexRadioDefault2">
+          Report 
+        </label>
+      </div> -->
+
+      <button class="btn btn-upload btn-success btn-add" type="submit">Submit</button>
+    </form>
+  </div>
+
+
+</body>
+</html>

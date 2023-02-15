@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>User</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/a7a4ea6722.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/static/sub_style.css">
+
+</head>
+<body>
+
+  <nav class="navbar navbar-inverse navbar-fixed-top" style="border-radius: 0px; background-color: #080808; opacity: 0.9; ">
+    <div class="container-fluid" style="padding-right: 35px;">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Preesco</a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="/User">Home</a></li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa-solid fa-user"></i><span class="caret"></span></a>
+          <ul class="dropdown-menu" style="min-width: 90px;">
+            <li><a href="/Update" ><i class="fa-solid fa-address-card"></i>  profile</a></li>
+            <li><a href="/Upload" ><i class="fa-solid fa-upload"></i>upload</a></li>
+            <li><a href="{{url_for('logout')}}" ><i class="fa-solid fa-right-from-bracket"></i> Signout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+    
+
+  <div class="conntainer">
+
+    {%if n == 0%}
+
+    <P style="font-size: large; color: wheat; align-items: center; text-align:center;">No Data Found</P>
+
+    {%else%}
+
+    <div class="table-responsive" id="container-table-header">
+
+      <table class="table" id="tbl">
+        <thead class="thead-col">
+          <tr>
+            <th scope="col" class="tbID">ID</th>
+            <th scope="col" class="email">File Name</th>
+            <th scope="col" class="name">Note</th>
+            <th scope="col" class="tb_btn">Action</th>
+          </tr>
+      </table>
+  
+    </div>
+
+    <div class="table-responsive" id="container-table">
+
+      <table class="table table-hover" id="tbl-sec">
+        <tbody class="row-body">
+
+          {%for row in all_data%}
+          <tr class="table-tr">
+            <th scope="row" class="tbID">{{row[1]}}</th>
+            <td class="email">{{row[2]}}</td>
+            <td class="name">{{row[3]}}</td>
+            <td class="tb_btn">
+              <a href="{{url_for('downloadreport',report_id = row[0])}}"><i class="fa-solid fa-download" style="color: rgb(117, 115, 115);" ></i></a>
+              <a href="{{url_for('deletereport',report_id = row[0])}}"><i class="fa-solid fa-trash" style="color: rgb(117, 115, 115);" ></i></a>
+            </td> 
+          </tr>
+          {%endfor%}
+
+        </tbody>
+      </table>
+
+      {%endif%}
+
+    </div>
+  </div>
+
+
+</body>
+</html>
