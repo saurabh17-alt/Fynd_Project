@@ -15,6 +15,7 @@ user_status = False
 user_id = None
 user_flag = False
 file_path = ""
+cwddr = ""
 
 @app.route("/", methods = ["POST","GET"])
 @app.route("/home", methods = ["POST","GET"])
@@ -159,7 +160,7 @@ def upload():
     global file_path
     if login_status == True:
         if request.method == "POST":
-
+            os.chdir(cwddr)
             filel = request.files["file_name"]
             file_name = filel.filename
             p1 = os.getcwd()
@@ -231,13 +232,14 @@ def deletereport():
 
 @app.route("/downloadreport",methods = ["POST","GET"])
 def downloadreport():
-    global file_path
+    global file_path,user_id,cwddr
     if login_status == True:
-        global user_id
         if file_path == "":
             path = os.getcwd()
+            cwddr = path
             path+="/pdf_files"
             os.chdir(path=path)
+            print(os.chdir(path=path))
             file_path = path
         else:
             path = file_path
