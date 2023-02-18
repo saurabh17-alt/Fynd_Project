@@ -257,7 +257,7 @@ def downloadreport():
         fdata = database.fetch_pdf_file_data(report_id)
         fname = database.get_file_name(report_id)
 
-        fname  = path+"\\"+fname
+        fname  = path+"/"+fname
         filed = open(fname, 'wb')
         for i in fdata:
             filed.write(i)
