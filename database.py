@@ -92,9 +92,7 @@ def delete_row_report(v):
     db.commit()
 
 def upload_pdf_file(insert_blob_tuple):
-    sql_insert_blob_query = """ INSERT INTO reports
-                    (user_id, File_name, note, file_data) VALUES (%s,%s,%s,%s)"""
-
+    sql_insert_blob_query = " INSERT INTO reports (user_id, File_name, note, file_data) VALUES (%s,%s,%s,%s);"
     cur.execute(sql_insert_blob_query, insert_blob_tuple)
     db.commit()
 
