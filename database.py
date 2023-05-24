@@ -50,7 +50,7 @@ def get_info(v):
 def update_info(id_number,updated_list):
     l1 = updated_list
     l1.append(id_number)
-    query = "UPDATE user_details SET user_name='%s',email='%s', phone_number='%s', user_password='%s' WHERE user_id=%d;"%tuple(l1)
+    query = "UPDATE user_details SET user_name='%s',email='%s',user_password='%s',secret_key='%s' WHERE user_id=%d;"%tuple(l1)
     cur.execute(query)
     db.commit()
 
