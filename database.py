@@ -142,9 +142,12 @@ def admin_data():
     cur.execute(query)
     admin_data = cur.fetchone()
     m = admin_data[2]
-    p = admin_data[4]
+    p = admin_data[3]
 
     return m,p
+
+
+# print(admin_data())
 
 
 
