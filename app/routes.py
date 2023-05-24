@@ -84,6 +84,7 @@ def login():
                 user_status = True
                 login_status = True
                 ID = database.get_info(Email)[0]
+                # flash("Login Successfully")
                 return redirect("/User")
 
             else:
