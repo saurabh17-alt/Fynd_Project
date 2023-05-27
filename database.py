@@ -22,7 +22,7 @@ def exist_mail(m):
     return False
 
 def insert_data(name,email,pwd):
-    query = "INSERT INTO user_details (user_name, email,user_password) VALUES (%s,%s,%s);"
+    query = "INSERT INTO user_details(user_name, email,user_password) VALUES (%s,%s,%s);"
     val = [name,email,pwd]
     cur.execute(query,val)
     db.commit()
@@ -50,7 +50,7 @@ def get_info(v):
 def update_info(id_number,updated_list):
     l1 = updated_list
     l1.append(id_number)
-    query = "UPDATE user_details SET user_name='%s',email='%s',user_password='%s',secret_key='%s' WHERE user_id=%d;"%tuple(l1)
+    query = "UPDATE user_details SET user_name='%s',email='%s', user_password='%s', secret_key='%s' WHERE user_id=%d;"%tuple(l1)
     cur.execute(query)
     db.commit()
 
@@ -148,6 +148,9 @@ def admin_data():
 
 
 # print(admin_data())
+
+# insert_data("saurabh","saurabh@gmail.com","1234")
+
 
 
 
